@@ -166,6 +166,35 @@ export function formatEmail(email: string | undefined): string {
   return `#link("mailto:${cleanEmail}")[${escapeTypst(cleanEmail)}]`;
 }
 
+/**
+ * Renders all social/online profiles dynamically (e.g. LinkedIn, GitHub, Twitter/X, LeetCode, etc.)
+ */
+export function formatProfileLinks(profiles: Array<{ network?: string; username?: string; url?: string }> | undefined, fallbackUrl?: string): string[] {
+  const result: string[] = [];
+  const seenUrls = new Set<string>();
+
+  if (profiles && profiles.length > 0) {
+    for (const p of profiles) {
+      const linkUrl = p.url?.trim() || (p.username && p.network ? `https://${p.network.toLowerCase().replace(/\s+/g, '')}.com/${p.username.trim()}` : '');
+      if (linkUrl && !seenUrls.has(linkUrl.toLowerCase())) {
+        seenUrls.add(linkUrl.toLowerCase());
+        const label = p.network?.trim() || p.username?.trim() || linkUrl.replace(/^https?:\/\/(www\.)?/, '');
+        result.push(formatUrl(linkUrl, label));
+      }
+    }
+  }
+
+  // Fallback to top-level personal url if not already added
+  if (fallbackUrl && fallbackUrl.trim()) {
+    const cleanFallback = fallbackUrl.trim();
+    if (!seenUrls.has(cleanFallback.toLowerCase())) {
+      result.push(formatUrl(cleanFallback, 'Portfolio'));
+    }
+  }
+
+  return result;
+}
+
 export function formatBullets(bullets: string[] | undefined): string {
   if (!bullets || bullets.length === 0) return '';
   return bullets

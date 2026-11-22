@@ -1,5 +1,5 @@
 import { ResumeData, TemplateConfig } from '../models/resume.model';
-import { renderExtraSections, ResumeTemplate, escapeTypst, formatEmail, formatUrl, formatBullets, formatResumeDate, formatResumeDateRange, getSectionHeading, getTypstMargin, getTypstFontSize } from './template.interface';
+import { renderExtraSections, ResumeTemplate, escapeTypst, formatEmail, formatUrl, formatBullets, formatResumeDate, formatResumeDateRange, formatProfileLinks, getSectionHeading, getTypstMargin, getTypstFontSize } from './template.interface';
 
 /**
  * Grid CV Template
@@ -24,17 +24,11 @@ export class GridCvTemplate implements ResumeTemplate {
       ? [b.location.city, b.location.region, b.location.countryCode].filter(Boolean).join(', ')
       : '';
 
-    const linkedin = b.profiles?.find(p => p.network?.toLowerCase().includes('linkedin'))?.url || '';
-    const github = b.profiles?.find(p => p.network?.toLowerCase().includes('github'))?.url || '';
-    const portfolio = b.profiles?.find(p => p.network?.toLowerCase().includes('portfolio'))?.url || b.url || '';
-
     const contactLinks: string[] = [];
     if (locStr) contactLinks.push(escapeTypst(locStr));
     if (b.phone) contactLinks.push(escapeTypst(b.phone));
     if (b.email) contactLinks.push(formatEmail(b.email));
-    if (linkedin) contactLinks.push(formatUrl(linkedin, 'LinkedIn'));
-    if (github) contactLinks.push(formatUrl(github, 'GitHub'));
-    if (portfolio) contactLinks.push(formatUrl(portfolio, 'Portfolio'));
+    contactLinks.push(...formatProfileLinks(b.profiles, b.url));
 
     const expItems = (d.work || []).map(exp => {
       const dateStr = formatResumeDateRange(exp.startDate, exp.endDate, '–');

@@ -80,46 +80,58 @@ import { SectionVisibilityToggleComponent } from '../ui/section-visibility-toggl
         </div>
 
         <!-- Online Profiles -->
-        <div class="profiles-section mt-5 pt-4 border-t border-slate-200">
-          <div class="flex items-center justify-between mb-3">
+        <div class="profiles-section">
+          <div class="profiles-header">
             <div>
-              <h3 class="text-sm font-semibold text-slate-800">Online Profiles</h3>
-              <p class="text-xs text-slate-500">GitHub, LinkedIn, Twitter, etc.</p>
+              <h3 class="profiles-title">Online Profiles & Social Links</h3>
+              <p class="profiles-subtitle">LinkedIn, GitHub, Twitter, etc.</p>
             </div>
             <button type="button" class="btn-nuxt-secondary" (click)="store.addProfile()">
-              + Add Profile
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>Add Profile</span>
             </button>
           </div>
 
           <div class="flex flex-col gap-3">
             @for (profile of store.basics().profiles || []; track $index; let pIdx = $index) {
-              <div class="profile-row-card p-3 bg-slate-50 border border-slate-200 rounded-lg flex items-center gap-3">
-                <div class="flex-1 flex flex-col gap-2">
+              <div class="profile-block-card">
+                <div class="profile-card-top">
+                  <div class="profile-badge-group">
+                    <span class="index-pill">{{ pIdx + 1 }}</span>
+                    <span class="profile-network-label">{{ profile.network || 'Profile Link' }}</span>
+                    <span class="profile-username-tag" *ngIf="profile.username">({{ profile.username }})</span>
+                  </div>
+                  <button type="button" class="btn-icon-subtle delete" (click)="store.removeProfile(pIdx)" title="Remove profile">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="form-vertical-flow">
                   <app-form-input
-                    label="Network"
-                    placeholder="e.g. LinkedIn"
+                    label="Network Name"
+                    placeholder="e.g. LinkedIn, GitHub, X (Twitter), Dribbble"
                     [value]="profile.network || ''"
                     (valueChange)="store.updateProfile(pIdx, { network: $event })"
                   />
                   <app-form-input
-                    label="Username"
-                    placeholder="e.g. jdoe"
+                    label="Username / Handle"
+                    placeholder="e.g. alexmorgan"
                     [value]="profile.username || ''"
                     (valueChange)="store.updateProfile(pIdx, { username: $event })"
                   />
                   <app-form-input
-                    label="Profile URL"
+                    label="Profile Web Address (URL)"
                     kind="url"
-                    placeholder="https://linkedin.com/in/..."
+                    placeholder="https://linkedin.com/in/alexmorgan"
                     [value]="profile.url || ''"
                     (valueChange)="store.updateProfile(pIdx, { url: $event })"
                   />
                 </div>
-                <button type="button" class="btn-icon-subtle delete" (click)="store.removeProfile(pIdx)" title="Remove profile">
-                  <svg viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/>
-                  </svg>
-                </button>
               </div>
             }
           </div>
