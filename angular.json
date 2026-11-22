@@ -50,7 +50,8 @@
                   "maximumError": "50kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "baseHref": "/resumaker/"
             },
             "development": {
               "optimization": false,

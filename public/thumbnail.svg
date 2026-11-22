@@ -76,8 +76,13 @@
     <!-- Brand Logo & Name -->
     <g transform="translate(0, 0)">
       <rect width="44" height="44" rx="12" fill="url(#brandGrad)" filter="url(#subtlePill)"/>
-      <path d="M14 11h11l7 7v15H14z" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linejoin="round"/>
-      <path d="M25 11v7h7M18 24h9M18 29h6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+      <!-- Folded Document Icon Matching Favicon Design -->
+      <path d="M15 11h11l7 7v15a2 2 0 0 1-2 2H15a2 2 0 0 1-2-2V13a2 2 0 0 1 2-2z" fill="#ffffff"/>
+      <path d="M26 11v6a1 1 0 0 0 1 1h6z" fill="#fecdd3"/>
+      <!-- Content lines -->
+      <rect x="17" y="22" width="10" height="2" rx="1" fill="#ff385c"/>
+      <rect x="17" y="26" width="14" height="1.8" rx="0.9" fill="#94a3b8"/>
+      <rect x="17" y="30" width="11" height="1.8" rx="0.9" fill="#cbd5e1"/>
       <text x="58" y="31" class="font-sans text-title" font-size="28" letter-spacing="-0.03em">Resumaker</text>
     </g>
 
@@ -115,7 +120,7 @@
     <!-- Footer URL -->
     <g transform="translate(0, 412)">
       <circle cx="6" cy="6" r="4.5" fill="#ff385c"/>
-      <text x="20" y="10.5" class="font-sans" font-size="15" font-weight="600" fill="#64748b">resumaker.vijayreddy.dev</text>
+      <text x="20" y="10.5" class="font-sans" font-size="15" font-weight="600" fill="#64748b">vijayreddy.dev/resumaker</text>
     </g>
   </g>
 
