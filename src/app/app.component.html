@@ -1,0 +1,89 @@
+<div class="studio-layout">
+
+  <!-- Smart Component: Clean Modern Header with IO actions & Option A Style Popover -->
+  <app-header
+    [templates]="templates"
+    [selectedTemplateId]="store.selectedTemplateId()"
+    [isGeneratingPdf]="isGeneratingPdf()"
+    (importJson)="onImportJsonFile($event)"
+    (exportJson)="onExportJson()"
+    (templateChange)="onTemplateChange($event)"
+    (downloadPdf)="onDownloadPdf()">
+  </app-header>
+
+  <!-- Main Content Body: 100% Focused on Content & Live Preview -->
+  <div class="studio-body" [attr.data-mobile-tab]="mobileTab()">
+
+    <!-- Mobile View Switcher (Visible only <= 900px) -->
+    <div class="mobile-tab-bar" role="tablist">
+      <button
+        type="button"
+        role="tab"
+        class="mobile-tab-btn"
+        [class.active]="mobileTab() === 'editor'"
+        (click)="mobileTab.set('editor')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+          <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+        </svg>
+        <span>Editor</span>
+      </button>
+
+      <button
+        type="button"
+        role="tab"
+        class="mobile-tab-btn"
+        [class.active]="mobileTab() === 'preview'"
+        (click)="mobileTab.set('preview')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+        <span>Preview</span>
+      </button>
+    </div>
+
+    <!-- Left Editor Pane: Pure Navigation Sidebar + Active Form -->
+    <div class="editor-pane" [class.mobile-hidden]="mobileTab() === 'preview'">
+
+      <!-- Navigation Tree Panel -->
+      <app-sidebar
+        [sections]="store.sectionList"
+        [activeSection]="store.activeSection()"
+        [hiddenSections]="store.hiddenSections()"
+        (selectSection)="store.setActiveSection($event)"
+        (toggleVisibility)="store.toggleSectionVisibility($event)">
+      </app-sidebar>
+
+      <!-- Active Section Form Card -->
+      <main class="form-content">
+        <div class="form-scrollable">
+          @switch (store.activeSection()) {
+            @case ('basics') { <app-basics-form /> }
+            @case ('summary') { <app-summary-form /> }
+            @case ('work') { <app-work-form /> }
+            @case ('projects') { <app-projects-form /> }
+            @case ('skills') { <app-skills-form /> }
+            @case ('education') { <app-education-form /> }
+            @case ('certificates') { <app-certificates-form /> }
+            @case ('awards') { <app-awards-form /> }
+            @case ('languages') { <app-languages-form /> }
+            @case ('interests') { <app-interests-form /> }
+            @case ('volunteer') { <app-volunteer-form /> }
+            @case ('references') { <app-references-form /> }
+          }
+        </div>
+      </main>
+
+    </div>
+
+    <!-- Right Live Preview Pane -->
+    <app-preview
+      [class.mobile-hidden]="mobileTab() === 'editor'"
+      [renderedPages]="renderedPages()"
+      (canvasClick)="onPreviewClick($event)">
+    </app-preview>
+
+  </div>
+
+</div>

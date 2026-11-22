@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Resumaker — Resume Made Simple</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Resumaker — Resume Made Simple">
+  <meta name="description" content="Build and edit your resume with guided sections, live preview, and high-resolution PDF export. Type your details and see your resume come alive in real time.">
+  <meta name="keywords" content="resume builder, modern resume maker, developer cv maker, software engineer resume, tech resume templates, ats resume, instant live preview, json resume, pdf export">
+  <meta name="author" content="Resumaker">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://resumaker.vijayreddy.dev/">
+  
+  <!-- Favicon & App Icons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <meta name="theme-color" content="#ff385c">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://resumaker.vijayreddy.dev/">
+  <meta property="og:title" content="Resumaker — Resume Made Simple">
+  <meta property="og:description" content="Build and edit your resume with guided sections, live preview, and high-resolution PDF export. Type your details and see your resume come alive.">
+  <meta property="og:image" content="https://resumaker.vijayreddy.dev/thumbnail.svg">
+  <meta property="og:image:type" content="image/svg+xml">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter / X -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://resumaker.vijayreddy.dev/">
+  <meta property="twitter:title" content="Resumaker — Resume Made Simple">
+  <meta property="twitter:description" content="Build and edit your resume with guided sections, live preview, and high-resolution PDF export. Type your details and see your resume come alive.">
+  <meta property="twitter:image" content="https://resumaker.vijayreddy.dev/thumbnail.svg">
+
+  <!-- Structured Data (JSON-LD) for Google Rich Results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Resumaker",
+    "url": "https://resumaker.vijayreddy.dev",
+    "description": "Lightning-fast in-browser resume builder. Type your details, see real-time preview, and export high-resolution PDF.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript and modern browser support",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Real-time instant live document rendering",
+      "Interactive click-to-edit bidirectional live SVG preview",
+      "Curated professional templates designed for modern careers",
+      "Standard JSON Resume import and export",
+      "One-click high-resolution PDF download with custom accent colors and density"
+    ]
+  }
+  </script>
+
+  <!-- Preconnect to CDNs for fastest WASM initial load -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+  <!-- Typst WASM All-In-One Bundle loaded directly in <head> -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@myriaddreamin/typst.ts@0.7.0/dist/esm/contrib/all-in-one-lite.bundle.js"></script>
+</head>
+<body>
+  <!-- Semantic Accessibility & Crawler Fallback -->
+  <noscript>
+    <div style="padding: 2rem; font-family: sans-serif; text-align: center;">
+      <h1>Resumaker — Modern ATS Resume Builder</h1>
+      <p>Resumaker requires JavaScript and WebAssembly to generate and preview high-density Typst resumes directly in your browser. Please enable JavaScript to continue.</p>
+    </div>
+  </noscript>
+
+  <app-root></app-root>
+</body>
+</html>

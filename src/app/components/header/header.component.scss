@@ -1,0 +1,533 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+:host {
+  display: block;
+  position: relative;
+  z-index: 50;
+}
+
+.app-header {
+  height: 58px;
+  background: #ffffff;
+  border-bottom: 1px solid $color-border-subtle;
+  padding: 0 24px;
+  @include flex-between;
+  flex-shrink: 0;
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    user-select: none;
+
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(255, 56, 92, 0.28);
+      object-fit: contain;
+    }
+
+    .brand-title {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: $color-text-main;
+
+      .brand-highlight {
+        color: $color-primary;
+      }
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .template-cluster {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+
+      .theme-dropdown-select {
+        height: 36px;
+        padding: 0 14px;
+        font-size: 13px;
+        font-weight: 600;
+        color: $color-text-main;
+        background: #ffffff;
+        border: 1px solid $color-border-subtle;
+        border-radius: 20px;
+        cursor: pointer;
+        outline: none;
+        transition: all $transition-fast;
+
+        &:hover {
+          border-color: $color-border-strong;
+          box-shadow: $shadow-sm;
+        }
+
+        &:focus {
+          border-color: $color-primary;
+          box-shadow: 0 0 0 3px rgba(255, 56, 92, 0.15);
+        }
+      }
+
+      .style-popover-container {
+        position: relative;
+      }
+
+      .btn-style-popover {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        height: 36px;
+        padding: 0 13px;
+        background: #ffffff;
+        border: 1px solid $color-border-subtle;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+        color: $color-text-main;
+        transition: all $transition-fast;
+
+        .swatch-indicator {
+          width: 13px;
+          height: 13px;
+          border-radius: 50%;
+          border: 1px solid rgba(0, 0, 0, 0.15);
+          flex-shrink: 0;
+        }
+
+        .chevron-icon {
+          width: 13px;
+          height: 13px;
+          color: $color-text-muted;
+          transition: transform $transition-fast;
+        }
+
+        &:hover, &.active {
+          border-color: $color-border-strong;
+          background: #f8fafc;
+          box-shadow: $shadow-sm;
+
+          .chevron-icon {
+            transform: translateY(1px);
+          }
+        }
+
+        &.active {
+          border-color: #3b82f6;
+          box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+        }
+      }
+    }
+
+    // --- Option A: Style Popover Card (~300px) ---
+    .style-popover-card {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      width: 300px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.14), 0 2px 6px rgba(15, 23, 42, 0.05);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      z-index: 100;
+      animation: popoverFadeIn 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes popoverFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-6px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .popover-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 10px;
+
+      .popover-title {
+        font-size: 13.5px;
+        font-weight: 700;
+        color: #0f172a;
+      }
+
+      .btn-popover-close {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        border-radius: 6px;
+        color: #94a3b8;
+        cursor: pointer;
+
+        svg {
+          width: 14px;
+          height: 14px;
+        }
+
+        &:hover {
+          background: #f1f5f9;
+          color: #0f172a;
+        }
+      }
+    }
+
+    .popover-section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .section-row-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .section-label {
+        font-size: 12px;
+        font-weight: 700;
+        color: #475569;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .btn-reset-link {
+        background: none;
+        border: none;
+        color: #2563eb;
+        font-size: 11px;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 0;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .color-palette-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+
+      .color-dot {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        border: 1.5px solid rgba(0, 0, 0, 0.12);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        transition: transform 0.15s, box-shadow 0.15s;
+
+        &:hover {
+          transform: scale(1.15);
+        }
+
+        &.active {
+          box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #2563eb;
+        }
+
+        .dot-check {
+          width: 12px;
+          height: 12px;
+        }
+      }
+
+      .custom-color-picker-label {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        border: 1.5px dashed #94a3b8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: relative;
+        background: #f8fafc;
+        transition: all 0.15s;
+
+        &:hover {
+          border-color: #2563eb;
+          color: #2563eb;
+        }
+
+        .picker-plus {
+          font-size: 14px;
+          font-weight: 700;
+          color: #64748b;
+          line-height: 1;
+        }
+
+        .native-picker {
+          position: absolute;
+          opacity: 0;
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .color-hex-row {
+      display: flex;
+      justify-content: flex-end;
+
+      .hex-text {
+        font-family: ui-monospace, monospace;
+        font-size: 11.5px;
+        font-weight: 600;
+        color: #64748b;
+      }
+    }
+
+    // Segmented Toggle Buttons
+    .segmented-control {
+      display: flex;
+      background: #f1f5f9;
+      padding: 3px;
+      border-radius: 8px;
+      gap: 3px;
+
+      .seg-btn {
+        flex: 1;
+        padding: 6px 0;
+        text-align: center;
+        background: transparent;
+        border: none;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        color: #64748b;
+        cursor: pointer;
+        transition: all 0.15s;
+
+        &:hover:not(.active) {
+          color: #0f172a;
+        }
+
+        &.active {
+          background: #ffffff;
+          color: #0f172a;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+      }
+    }
+
+    // Actions cluster
+    .header-actions-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-header-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 36px;
+      padding: 0 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: $color-text-main;
+      background: #ffffff;
+      border: 1px solid $color-border-subtle;
+      border-radius: 8px;
+      cursor: pointer;
+      user-select: none;
+      transition: all $transition-fast;
+
+      svg {
+        width: 15px;
+        height: 15px;
+        color: $color-text-muted;
+        flex-shrink: 0;
+      }
+
+      &:hover {
+        background: #f8fafc;
+        border-color: $color-border-strong;
+        color: #0f172a;
+
+        svg {
+          color: #0f172a;
+        }
+      }
+
+      &:active {
+        background: #f1f5f9;
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  // --- Download PDF Button ---
+  .btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: linear-gradient(135deg, #ff5a5f 0%, #ff385c 50%, #e00b41 100%);
+    color: #ffffff;
+    font-size: 13.5px;
+    font-weight: 700;
+    padding: 0 20px;
+    height: 38px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(255, 56, 92, 0.28);
+    transition: all $transition-fast;
+
+    &:hover:not(:disabled) {
+      background: linear-gradient(135deg, #ff385c 0%, #e00b41 100%);
+      box-shadow: 0 4px 14px rgba(255, 56, 92, 0.38);
+      transform: translateY(-1px);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(1px);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    svg {
+      width: 15px;
+      height: 15px;
+    }
+  }
+}
+
+// ==========================================
+// Header Responsive Rules (Mobile & Small Tablets)
+// ==========================================
+@media (max-width: 900px) {
+  .app-header {
+    height: 54px;
+    padding: 0 12px;
+    gap: 8px;
+
+    .brand {
+      gap: 6px;
+
+      .brand-logo {
+        width: 28px;
+        height: 28px;
+
+        svg {
+          width: 15px;
+          height: 15px;
+        }
+      }
+
+      .brand-title {
+        font-size: 16px;
+      }
+    }
+
+    .header-actions {
+      gap: 6px;
+
+      .template-cluster {
+        gap: 5px;
+
+        .theme-dropdown-select {
+          height: 32px;
+          padding: 0 8px;
+          font-size: 12px;
+          max-width: 110px;
+        }
+
+        .btn-style-popover {
+          height: 32px;
+          padding: 0 9px;
+          font-size: 12px;
+
+          .style-label {
+            display: none; // Keep swatch & chevron compact on mobile
+          }
+        }
+
+        .style-popover-card {
+          position: fixed;
+          top: 60px;
+          left: 12px;
+          right: 12px;
+          width: auto;
+          max-width: 360px;
+          margin: 0 auto;
+        }
+      }
+
+      .btn-download {
+        height: 32px;
+        padding: 0 12px;
+        font-size: 12px;
+        gap: 5px;
+
+        span {
+          display: inline;
+        }
+      }
+
+      .header-actions-group {
+        gap: 4px;
+
+        .btn-header-secondary {
+          height: 32px;
+          padding: 0 8px;
+          font-size: 11px;
+
+          .btn-text {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header {
+    .brand-title {
+      display: none; // Logo icon alone on very small phones
+    }
+
+    .header-actions {
+      .btn-download span {
+        display: none; // Download icon alone on narrow phones
+      }
+    }
+  }
+}

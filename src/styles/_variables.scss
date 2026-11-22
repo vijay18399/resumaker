@@ -1,0 +1,38 @@
+// Design System Variables (Airbnb-Inspired Premium Palette: Warm Porcelain, Coral/Rausch, Slate)
+
+// Primary Palette: Airbnb Signature Coral / Rausch + Deep Orange
+$color-primary: #ff385c;        // Signature Rausch / Coral
+$color-primary-hover: #e00b41;  // Deep Rausch
+$color-primary-dark: #d70466;   // Deepest Ruby
+$color-primary-light: #fff1f2;  // Soft Coral / Rose tint
+$color-primary-border: #fecdd3; // Soft Coral border
+
+// Neutral Gray / Porcelain Scale
+$color-bg-base: #f8fafc;
+$color-surface: #ffffff;
+$color-surface-alt: #f1f5f9;
+$color-border-subtle: #ebebeb;
+$color-border-strong: #dddddd;
+
+// Typography Scale
+$color-text-main: #222222;      // Airbnb primary black
+$color-text-muted: #717171;     // Airbnb secondary gray
+$color-text-dim: #b0b0b0;       // Airbnb subtle tertiary gray
+
+// Status & Accents
+$color-success: #10b981;
+$color-warning: #f59e0b;
+$color-error: #ef4444;
+
+// Shadows (Airbnb multi-layered diffusion)
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 12px 28px -4px rgba(0, 0, 0, 0.12), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+$shadow-paper: 0 2px 6px rgba(0, 0, 0, 0.04), 0 16px 36px -4px rgba(15, 23, 42, 0.10);
+$shadow-pill: 0 2px 4px rgba(0, 0, 0, 0.06), 0 6px 16px rgba(0, 0, 0, 0.08);
+
+// Transitions
+$transition-fast: 180ms cubic-bezier(0.2, 0, 0, 1);
+$transition-smooth: 280ms cubic-bezier(0.16, 1, 0.3, 1);
+
+

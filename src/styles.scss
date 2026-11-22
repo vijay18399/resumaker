@@ -1,0 +1,50 @@
+@use './styles/variables' as *;
+@use './styles/mixins' as *;
+@use './styles/forms';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: $color-bg-base;
+  color: $color-text-main;
+  -webkit-font-smoothing: antialiased;
+}
+
+// Global paper SVG render container
+.rendered-svg-wrapper {
+  svg {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 4px;
+    box-shadow: $shadow-paper;
+    border: 1px solid $color-border-subtle;
+  }
+}
+
+// Flash Highlight Animation for click-to-edit
+@keyframes flashGlow {
+  0% {
+    box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.45);
+    background-color: #fff7ed;
+  }
+
+  100% {
+    box-shadow: none;
+    background-color: transparent;
+  }
+}
+
+.flash-highlight {
+  animation: flashGlow 1.2s ease-out forwards;
+}

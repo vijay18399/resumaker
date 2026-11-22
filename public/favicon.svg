@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <!-- Background Gradient (Signature Coral / Rausch Gradient matching Thumbnail & App Header) -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff5a5f"/>
+      <stop offset="50%" stop-color="#ff385c"/>
+      <stop offset="100%" stop-color="#d70466"/>
+    </linearGradient>
+
+    <!-- Subtle inner document shadow -->
+    <filter id="docShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#880028" flood-opacity="0.32"/>
+    </filter>
+
+    <!-- Fold / Corner gradient -->
+    <linearGradient id="foldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fecdd3"/>
+      <stop offset="100%" stop-color="#fda4af"/>
+    </linearGradient>
+
+    <!-- Fold shadow -->
+    <linearGradient id="foldShadow" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Squircle Base Container with Signature Gradient -->
+  <rect width="512" height="512" rx="116" fill="url(#bgGrad)"/>
+
+  <!-- Document Sheet with folded top-right corner -->
+  <g filter="url(#docShadow)">
+    <!-- Document Main Body -->
+    <path d="M 148 108 
+             L 300 108 
+             L 364 172 
+             L 364 404 
+             A 16 16 0 0 1 348 420 
+             L 164 420 
+             A 16 16 0 0 1 148 404 
+             Z" 
+          fill="#ffffff"/>
+
+    <!-- Fold Shadow Triangle -->
+    <path d="M 300 108 L 300 172 L 364 172 Z" fill="url(#foldShadow)"/>
+
+    <!-- Fold Flap (Turned Corner) -->
+    <path d="M 300 108 
+             L 300 160 
+             A 12 12 0 0 0 312 172 
+             L 364 172 
+             Z" 
+          fill="url(#foldGrad)"/>
+  </g>
+
+  <!-- Resume Content Stripes (ATS Layout Lines) -->
+  <!-- Header / Name Bar (Brand Accent) -->
+  <rect x="188" y="152" width="96" height="14" rx="7" fill="#ff385c"/>
+
+  <!-- Divider Line -->
+  <rect x="188" y="180" width="136" height="4" rx="2" fill="#e2e8f0"/>
+
+  <!-- Section 1 (Experience) -->
+  <rect x="188" y="206" width="60" height="10" rx="5" fill="#1e293b"/>
+  <!-- Sub-bar (Role) -->
+  <rect x="188" y="226" width="136" height="8" rx="4" fill="#64748b"/>
+  <!-- Bullet line 1 -->
+  <circle cx="194" cy="248" r="3.5" fill="#ff385c"/>
+  <rect x="206" y="244" width="118" height="8" rx="4" fill="#cbd5e1"/>
+  <!-- Bullet line 2 -->
+  <circle cx="194" cy="268" r="3.5" fill="#ff385c"/>
+  <rect x="206" y="264" width="98" height="8" rx="4" fill="#cbd5e1"/>
+
+  <!-- Divider Line 2 -->
+  <rect x="188" y="292" width="136" height="3" rx="1.5" fill="#f1f5f9"/>
+
+  <!-- Section 2 (Skills / Education) -->
+  <rect x="188" y="312" width="70" height="10" rx="5" fill="#1e293b"/>
+  <!-- Tag Chips -->
+  <rect x="188" y="332" width="38" height="14" rx="7" fill="#ffe4e6"/>
+  <rect x="194" y="336" width="26" height="6" rx="3" fill="#ff385c"/>
+
+  <rect x="234" y="332" width="46" height="14" rx="7" fill="#ffe4e6"/>
+  <rect x="240" y="336" width="34" height="6" rx="3" fill="#ff385c"/>
+
+  <rect x="288" y="332" width="36" height="14" rx="7" fill="#ffe4e6"/>
+  <rect x="294" y="336" width="24" height="6" rx="3" fill="#ff385c"/>
+
+  <!-- Bottom Details Line -->
+  <rect x="188" y="366" width="136" height="8" rx="4" fill="#cbd5e1"/>
+  <rect x="188" y="384" width="86" height="8" rx="4" fill="#e2e8f0"/>
+</svg>

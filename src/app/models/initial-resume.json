@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "theme": "basic_resume",
+    "version": "1.0.0"
+  },
+  "basics": {
+    "name": "Alex Morgan",
+    "label": "Senior Full-Stack & Frontend Architect",
+    "image": "",
+    "email": "alex.morgan@example.com",
+    "phone": "+1 (555) 234-5678",
+    "url": "https://alexmorgan.dev",
+    "summary": "Full-Stack Software Engineer with 7+ years of experience specializing in high-performance web applications, distributed frontend architectures, and reactive systems. Proven track record of scaling user-facing applications to 2M+ active users, optimizing Core Web Vitals by 42%, and mentoring high-velocity engineering teams across modern TypeScript ecosystems.",
+    "location": {
+      "city": "San Francisco",
+      "region": "California",
+      "countryCode": "US"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "alexmorgan-dev",
+        "url": "https://linkedin.com/in/alexmorgan-dev"
+      },
+      {
+        "network": "GitHub",
+        "username": "alexmorgan",
+        "url": "https://github.com/alexmorgan"
+      },
+      {
+        "network": "Portfolio",
+        "username": "alexmorgan.dev",
+        "url": "https://alexmorgan.dev"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Vanguard Cloud Platforms",
+      "position": "Staff Frontend Engineer",
+      "url": "https://vanguardcloud.example.com",
+      "startDate": "2023-01",
+      "endDate": "Present",
+      "location": "San Francisco, CA",
+      "summary": "Architected next-generation enterprise cloud monitoring dashboards and real-time visualization tooling.",
+      "highlights": [
+        "Architected an event-driven telemetry dashboard using Angular, Signals, and WebSockets, supporting 60 FPS real-time rendering across 50,000 streaming data points.",
+        "Spearheaded micro-frontend migration strategy reducing client bundle transfer sizes by 38% and lowering average time-to-interactive (TTI) to under 800ms.",
+        "Established automated end-to-end regression pipelines in Playwright and GitHub Actions, raising release confidence and eliminating production deployment rollbacks.",
+        "Mentored 8 senior and mid-level engineers through bi-weekly architecture RFC reviews and code craftsmanship workshops."
+      ]
+    },
+    {
+      "name": "Nexus Financial Technologies",
+      "position": "Senior Software Engineer",
+      "url": "",
+      "startDate": "2020-06",
+      "endDate": "2022-12",
+      "location": "Austin, TX",
+      "summary": "Engineered compliance and transaction processing workflows for institutional trading clients.",
+      "highlights": [
+        "Led full rewrite of merchant onboarding form flow into a modular state machine, increasing completion conversion rate by 24%.",
+        "Implemented high-density financial data tables with canvas-virtualized rendering, eliminating UI lockup during peak volatility periods.",
+        "Collaborated with security teams to ensure SOC2 Type II and GDPR compliance across all client authentication workflows."
+      ]
+    },
+    {
+      "name": "Starlight Interactive",
+      "position": "Software Engineer",
+      "url": "",
+      "startDate": "2018-05",
+      "endDate": "2020-05",
+      "location": "Seattle, WA",
+      "summary": "Built collaborative web tools, interactive canvas editors, and responsive client portals.",
+      "highlights": [
+        "Developed custom canvas-based annotation and simulation editors using Fabric.js and TypeScript for digital learning suites.",
+        "Integrated REST and GraphQL API gateways with offline-first client caching via IndexedDB and Service Workers."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "HyperCanvas Studio",
+      "description": "Collaborative, GPU-accelerated infinite canvas engine built in WebAssembly and TypeScript.",
+      "url": "https://hypercanvas.example.com",
+      "startDate": "2024-03",
+      "endDate": "2024-11",
+      "keywords": ["TypeScript", "WebAssembly", "WebGL", "RxJS", "Tailwind CSS"],
+      "highlights": [
+        "Engineered spatial indexing algorithm indexing 100K+ vector nodes at smooth 60fps frame rates.",
+        "Reached 4.2k stars on GitHub and featured on Hacker News front page."
+      ]
+    },
+    {
+      "name": "DataPulse CLI",
+      "description": "High-throughput log analyzer and stream parsing tool with terminal dashboard rendering.",
+      "url": "https://github.com/alexmorgan/datapulse",
+      "startDate": "2023-08",
+      "endDate": "2024-01",
+      "keywords": ["Rust", "Node.js", "Docker", "REST API"],
+      "highlights": [
+        "Processed 200MB/sec compressed telemetry logs with sub-15ms parsing latency."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Frontend Architecture",
+      "keywords": ["Angular", "TypeScript", "React", "Next.js", "RxJS", "HTML5", "CSS3 / SCSS", "Tailwind CSS"]
+    },
+    {
+      "name": "Backend & Cloud",
+      "keywords": ["Node.js", "Python", "GraphQL", "REST APIs", "Docker", "AWS (S3, Lambda)", "PostgreSQL", "Redis"]
+    },
+    {
+      "name": "Tooling & Quality",
+      "keywords": ["Playwright", "Jest", "Karma", "Webpack", "Vite", "Git", "CI/CD Pipelines", "WebAssembly (WASM)"]
+    },
+    {
+      "name": "Graphics & Canvas",
+      "keywords": ["HTML5 Canvas", "WebGL", "D3.js", "Highcharts", "SVG Optimization"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of California, Berkeley",
+      "area": "Computer Science",
+      "studyType": "B.S. in Computer Science",
+      "startDate": "2014-08",
+      "endDate": "2018-05",
+      "score": "GPA: 3.85 / 4.0",
+      "courses": ["Distributed Systems", "Data Structures & Algorithms", "Computer Networks", "Database Architecture"]
+    }
+  ],
+  "certificates": [
+    {
+      "name": "AWS Certified Solutions Architect – Associate",
+      "issuer": "Amazon Web Services",
+      "date": "2023-04",
+      "url": "https://aws.amazon.com/certification"
+    },
+    {
+      "name": "Meta Certified Front-End Developer",
+      "issuer": "Meta",
+      "date": "2022-09",
+      "url": "https://coursera.org"
+    }
+  ],
+  "awards": [
+    {
+      "title": "Outstanding Engineering Excellence Award",
+      "awarder": "Vanguard Cloud Platforms",
+      "date": "2024-10",
+      "summary": "Recognized for architecting and delivering the mission-critical telemetry system 3 weeks ahead of schedule."
+    },
+    {
+      "title": "1st Place – Global Open Tech Hackathon",
+      "awarder": "TechForward Foundation",
+      "date": "2023-05",
+      "summary": "Built an accessible offline-first medical intake portal using WebAssembly and local PWA caches."
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native"
+    },
+    {
+      "language": "Spanish",
+      "fluency": "Professional Working"
+    },
+    {
+      "language": "German",
+      "fluency": "Elementary"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Open Source Systems",
+      "keywords": ["Compiler design", "WASM toolchains", "DevTools"]
+    },
+    {
+      "name": "Endurance Sports",
+      "keywords": ["Marathon running", "Bouldering", "Alpine hiking"]
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Code for Good Foundation",
+      "position": "Lead Technical Mentor",
+      "startDate": "2021-01",
+      "endDate": "Present",
+      "location": "San Francisco, CA",
+      "summary": "Taught web fundamentals and guided career transition projects for underrepresented students entering technology.",
+      "highlights": [
+        "Mentored over 45 students through hands-on full-stack development bootcamps with an 82% job placement rate."
+      ]
+    }
+  ],
+  "references": [
+    {
+      "name": "Jordan Chen",
+      "organization": "Vanguard Cloud Platforms",
+      "relationship": "VP of Engineering",
+      "reference": "Alex is an exceptional engineer whose architecture rigor and leadership elevated our entire frontend division. Any team would be lucky to have them."
+    }
+  ]
+}

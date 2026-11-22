@@ -1,0 +1,362 @@
+// Shared Form Design System (Material You / M3 Clean Slate Aesthetic)
+@use './variables' as *;
+@use './mixins' as *;
+
+$color-gray-50: #f8fafc;
+$color-gray-100: #f1f5f9;
+$color-gray-200: #e2e8f0;
+$color-gray-300: #cbd5e1;
+$color-gray-400: #94a3b8;
+$color-gray-500: #64748b;
+$color-gray-600: #475569;
+$color-gray-700: #334155;
+$color-gray-800: #1e293b;
+$color-gray-900: #0f172a;
+
+// Main form container (constrained readable width, centered)
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 660px;
+  margin: 0 auto;
+}
+
+// Section Header Card - Modern Material Surface (Clean 2-Row Layout on Desktop & Mobile)
+.form-section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 18px 20px;
+  background: #ffffff;
+  border: 1px solid $color-gray-200;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
+  gap: 14px;
+  width: 100%;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    border-color: $color-gray-300;
+  }
+
+  // Row 1: Icon badge + Title & Subtitle description
+  .header-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+    width: 100%;
+
+    .header-icon-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: $color-primary-light;
+      color: $color-primary;
+      border: 1px solid $color-primary-border;
+      flex-shrink: 0;
+      box-shadow: 0 1px 3px rgba(255, 56, 92, 0.12);
+
+      svg {
+        width: 22px;
+        height: 22px;
+      }
+    }
+
+    .header-text {
+      min-width: 0;
+      flex: 1;
+
+      h1 {
+        font-size: 19px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: $color-gray-900;
+        margin: 0;
+        line-height: 1.25;
+      }
+
+      p {
+        font-size: 13px;
+        color: $color-gray-500;
+        margin: 2px 0 0 0;
+        line-height: 1.4;
+      }
+    }
+  }
+
+  // Row 2: Action buttons and Visibility toggle with dedicated row & top border divider
+  .header-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    padding-top: 12px;
+    border-top: 1px solid $color-gray-100;
+
+    .btn-nuxt-primary {
+      margin-left: auto; // Align action button to the right, toggle to the left
+    }
+  }
+
+  // Tablet & Mobile layout adjustments
+  @media (max-width: 768px) {
+    padding: 14px 16px;
+    gap: 12px;
+
+    .header-info {
+      .header-text {
+        h1 {
+          font-size: 17px;
+        }
+
+        p {
+          font-size: 12.5px;
+        }
+      }
+    }
+
+    .header-action {
+      padding-top: 10px;
+
+      .btn-nuxt-primary {
+        margin-left: 0;
+        flex: 1;
+        justify-content: center;
+        height: 38px;
+      }
+    }
+  }
+}
+
+// Material Primary Filled Button
+.btn-nuxt-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+  color: #ffffff;
+  background-color: $color-gray-900;
+  border: 1px solid $color-gray-800;
+  border-radius: 20px; // Pill shape (Material 3 standard)
+  padding: 8px 18px;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    background-color: $color-gray-800;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
+    transform: translateY(-0.5px);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+  }
+}
+
+// Material Outlined Secondary Button
+.btn-nuxt-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+  color: $color-gray-700;
+  background: #ffffff;
+  border: 1px solid $color-gray-300;
+  border-radius: 18px; // Pill shape
+  padding: 6px 14px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    background: $color-gray-50;
+    color: $color-gray-900;
+    border-color: $color-gray-400;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+}
+
+// Clean Circular / Rounded Action Icon Button (Material Standard)
+.btn-icon-subtle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid $color-gray-200;
+  background: #ffffff;
+  color: $color-gray-600;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  transition: all 0.15s ease-in-out;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+
+  svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    background: $color-gray-100;
+    border-color: $color-gray-300;
+    color: $color-gray-900;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    background: $color-gray-50 !important;
+    border-color: $color-gray-200 !important;
+    color: $color-gray-400 !important;
+    box-shadow: none !important;
+  }
+
+  &.delete {
+    color: #ef4444;
+    border-color: #fee2e2;
+    background: #fffafa;
+
+    &:hover {
+      background: #fef2f2;
+      color: #dc2626;
+      border-color: #fca5a5;
+    }
+  }
+}
+
+// Material Surface Card (Elevated Clean Container)
+.nuxt-card {
+  background: #ffffff;
+  border: 1px solid $color-gray-200;
+  border-radius: 16px;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.05), 0 2px 6px rgba(15, 23, 42, 0.02);
+  padding: 22px;
+  transition: border-color 0.18s ease-in-out, box-shadow 0.18s ease-in-out;
+
+  &.collection-card {
+    position: relative;
+    margin-bottom: 16px;
+
+    &:hover {
+      border-color: $color-gray-300;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.03);
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 16px;
+    border-radius: 14px;
+  }
+}
+
+// Collection Top Bar - Structured Card Header
+.card-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid $color-gray-100;
+  gap: 12px;
+
+  .card-item-title-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+
+    .index-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      background: $color-gray-100;
+      color: $color-gray-700;
+      border: 1px solid $color-gray-200;
+      flex-shrink: 0;
+    }
+
+    .card-item-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: $color-gray-900;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-item-subtitle {
+      font-size: 13px;
+      color: $color-gray-500;
+      font-weight: 400;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-left: 2px;
+
+      &::before {
+        content: '•';
+        margin-right: 6px;
+        color: $color-gray-300;
+      }
+    }
+  }
+
+  .card-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+}
+
+// Single-Column Vertical Form Layout
+.form-vertical-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}

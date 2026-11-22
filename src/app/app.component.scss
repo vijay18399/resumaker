@@ -1,0 +1,142 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.studio-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+// Studio Body Layout
+.studio-body {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 58px);
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+
+// Mobile Tab Switcher Bar (Hidden on Desktop)
+.mobile-tab-bar {
+  display: none;
+}
+
+// Left Split: Editor Pane (SideNav + Form Cards)
+.editor-pane {
+  display: flex;
+  flex: 0 0 52%;
+  min-width: 520px;
+  max-width: 720px;
+  height: 100%;
+  border-right: 1px solid $color-border-subtle;
+  background: #ffffff;
+  overflow: hidden;
+
+  // Active Form Content Container
+  .form-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #ffffff;
+    overflow: hidden;
+
+    .form-scrollable {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px 28px;
+      @include custom-scrollbar;
+    }
+  }
+}
+
+// ==========================================
+// Responsive Layout for Tablets & Mobile (<= 900px)
+// ==========================================
+@media (max-width: 900px) {
+  .studio-layout {
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  .studio-body {
+    flex-direction: column;
+    height: calc(100dvh - 56px);
+  }
+
+  // Mobile Top Tab Switcher
+  .mobile-tab-bar {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-bottom: 1px solid $color-border-subtle;
+    padding: 6px 12px;
+    gap: 8px;
+    flex-shrink: 0;
+    z-index: 20;
+
+    .mobile-tab-btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid $color-border-subtle;
+      background: #f8fafc;
+      color: $color-text-muted;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all $transition-fast;
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      &.active {
+        background: #ffffff;
+        border-color: $color-primary;
+        color: $color-primary;
+        box-shadow: 0 1px 4px rgba(255, 56, 92, 0.15);
+      }
+    }
+  }
+
+  .editor-pane {
+    flex: 1 1 100%;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    border-right: none;
+    flex-direction: column;
+
+    &.mobile-hidden {
+      display: none !important;
+    }
+
+    .form-content {
+      width: 100%;
+
+      .form-scrollable {
+        padding: 16px 16px 32px;
+      }
+    }
+  }
+
+  app-preview {
+    flex: 1 1 100%;
+    width: 100%;
+    height: 100%;
+
+    &.mobile-hidden {
+      display: none !important;
+    }
+  }
+}
