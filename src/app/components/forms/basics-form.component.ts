@@ -2,12 +2,11 @@ import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResumeStore } from '../../services/resume-store.service';
 import { FormInputComponent } from '../ui/form-input.component';
-import { SectionVisibilityToggleComponent } from '../ui/section-visibility-toggle.component';
 
 @Component({
   selector: 'app-basics-form',
   standalone: true,
-  imports: [CommonModule, FormInputComponent, SectionVisibilityToggleComponent],
+  imports: [CommonModule, FormInputComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="form-container">
@@ -22,12 +21,6 @@ import { SectionVisibilityToggleComponent } from '../ui/section-visibility-toggl
             <h1>Personal Information</h1>
             <p>Your contact details, job title, and online profiles</p>
           </div>
-        </div>
-        <div class="header-action">
-          <app-section-visibility-toggle
-            [isHidden]="!!store.hiddenSections()['basics']"
-            (toggle)="store.toggleSectionVisibility('basics')"
-          />
         </div>
       </div>
 

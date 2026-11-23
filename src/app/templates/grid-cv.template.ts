@@ -126,7 +126,7 @@ ${volunteerItems}
 #link("nav:section:references")[== ${getSectionHeading('references', config)}]
 ${refItems}
 ` : '',
-      summary: !hidden['basics'] && b.summary?.trim() ? `
+      summary: !hidden['summary'] && b.summary?.trim() ? `
 #link("nav:section:summary")[== ${getSectionHeading('summary', config)}]
 #link("nav:section:summary")[${escapeTypst(b.summary)}]
 ` : '',

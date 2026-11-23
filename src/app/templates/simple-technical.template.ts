@@ -102,7 +102,7 @@ export class SimpleTechnicalTemplate implements ResumeTemplate {
       interests: extraSnippets['interests'] || '',
       volunteer: extraSnippets['volunteer'] || '',
       references: extraSnippets['references'] || '',
-      summary: !hidden['basics'] && b.summary?.trim() ? `
+      summary: !hidden['summary'] && b.summary?.trim() ? `
 #link("nav:section:summary")[== ${getSectionHeading('summary', config)}]
 #link("nav:section:summary")[${escapeTypst(b.summary)}]
 ` : '',
