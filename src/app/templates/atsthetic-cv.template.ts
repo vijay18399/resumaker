@@ -1,5 +1,5 @@
 import { ResumeData, TemplateConfig } from '../models/resume.model';
-import { renderExtraSections, ResumeTemplate, escapeTypst, formatEmail, formatUrl, formatBullets, formatResumeDate, formatResumeDateRange, formatProfileLinks, getSectionHeading, getTypstMargin, getTypstFontSize } from './template.interface';
+import { renderExtraSections, ResumeTemplate, escapeTypst, formatEmail, formatUrl, formatBullets, formatResumeDate, formatResumeDateRange, formatProfileLinks, formatEducationScore, getSectionHeading, getTypstMargin, getTypstFontSize } from './template.interface';
 
 /**
  * ATSthetic CV Template
@@ -50,7 +50,7 @@ export class AtstheticCvTemplate implements ResumeTemplate {
     const eduItems = (d.education || []).map(edu => {
       const dateStr = formatResumeDateRange(edu.startDate, edu.endDate, '—');
       const degreeStr = [edu.studyType, edu.area].filter(Boolean).join(' in ');
-      const gpaStr = edu.score ? ` (GPA: ${escapeTypst(edu.score)})` : '';
+      const gpaStr = formatEducationScore(edu.score);
       const block = `#block(breakable: false)[#grid(
   columns: (1fr, auto),
   gutter: 4pt,

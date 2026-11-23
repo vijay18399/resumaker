@@ -57,7 +57,7 @@
 
       <!-- Active Section Form Card -->
       <main class="form-content">
-        <div class="form-scrollable">
+        <div class="form-scrollable" #formScrollable>
           @switch (store.activeSection()) {
             @case ('basics') { <app-basics-form /> }
             @case ('summary') { <app-summary-form /> }

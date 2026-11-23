@@ -1,5 +1,5 @@
 import { ResumeData, TemplateConfig } from '../models/resume.model';
-import { renderExtraSections, ResumeTemplate, escapeTypst, formatEmail, formatUrl, formatBullets, formatResumeDate, formatResumeDateRange, formatProfileLinks, getSectionHeading, getTypstMargin, getTypstFontSize } from './template.interface';
+import { renderExtraSections, ResumeTemplate, escapeTypst, formatEmail, formatUrl, formatBullets, formatResumeDate, formatResumeDateRange, formatProfileLinks, formatEducationScore, getSectionHeading, getTypstMargin, getTypstFontSize } from './template.interface';
 
 /**
  * Basic Resume Template
@@ -52,7 +52,7 @@ export class BasicResumeTemplate implements ResumeTemplate {
     const eduItems = (d.education || []).map(edu => {
       const dateStr = formatResumeDateRange(edu.startDate, edu.endDate, '—');
       const degreeStr = [edu.studyType, edu.area].filter(Boolean).join(' in ');
-      const gpaStr = edu.score ? ` (Score: ${escapeTypst(edu.score)})` : '';
+      const gpaStr = formatEducationScore(edu.score);
       const block = `#block(breakable: false)[#edu(
   institution: "${escapeTypst(edu.institution)}",
   degree: "${escapeTypst(degreeStr)}${gpaStr}",

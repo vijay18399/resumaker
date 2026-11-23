@@ -31,20 +31,3 @@ html, body {
     border: 1px solid $color-border-subtle;
   }
 }
-
-// Flash Highlight Animation for click-to-edit
-@keyframes flashGlow {
-  0% {
-    box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.45);
-    background-color: #fff7ed;
-  }
-
-  100% {
-    box-shadow: none;
-    background-color: transparent;
-  }
-}
-
-.flash-highlight {
-  animation: flashGlow 1.2s ease-out forwards;
-}

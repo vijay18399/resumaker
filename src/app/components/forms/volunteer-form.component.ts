@@ -40,8 +40,7 @@ import { SectionVisibilityToggleComponent } from '../ui/section-visibility-toggl
             <div class="card-top-bar">
               <div class="card-item-title-group">
                 <span class="index-pill">{{ idx + 1 }}</span>
-                <span class="card-item-title">{{ vol.position || 'Role' }}</span>
-                <span class="card-item-subtitle" *ngIf="vol.organization">{{ vol.organization }}</span>
+                <span class="card-item-title">{{ vol.position || vol.organization || 'Role' }}</span>
               </div>
               <div class="card-actions flex items-center gap-1">
                 <button type="button" class="btn-icon-subtle" (click)="store.moveVolunteer(idx, 'up')" [disabled]="idx === 0" title="Move Up">↑</button>

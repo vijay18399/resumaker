@@ -41,7 +41,6 @@ import { SectionVisibilityToggleComponent } from '../ui/section-visibility-toggl
               <div class="card-item-title-group">
                 <span class="index-pill">{{ idx + 1 }}</span>
                 <span class="card-item-title">{{ cert.name || 'Certificate Name' }}</span>
-                <span class="card-item-subtitle" *ngIf="cert.issuer">{{ cert.issuer }}</span>
               </div>
               <div class="card-actions flex items-center gap-1">
                 <button type="button" class="btn-icon-subtle" (click)="store.moveCertification(idx, 'up')" [disabled]="idx === 0" title="Move Up">↑</button>

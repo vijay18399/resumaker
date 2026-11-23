@@ -219,7 +219,7 @@ describe('AppComponent Integration Tests', () => {
     expect(store.activeSection()).toBe('work');
   });
 
-  it('should scroll and flash highlight on scrollToSubItem', (done) => {
+  it('should scroll on scrollToSubItem', (done) => {
     const div = document.createElement('div');
     div.id = 'target-item-123';
     document.body.appendChild(div);
@@ -229,9 +229,8 @@ describe('AppComponent Integration Tests', () => {
     expect(store.activeSubItemId()).toBe('target-item-123');
 
     setTimeout(() => {
-      expect(div.classList.contains('flash-highlight')).toBeTrue();
       document.body.removeChild(div);
       done();
-    }, 60);
+    }, 70);
   });
 });

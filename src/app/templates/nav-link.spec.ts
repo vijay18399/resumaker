@@ -1,5 +1,5 @@
 import { stripInternalNavLinks } from './nav-link-stripper';
-import { formatResumeDate, formatResumeDateRange } from './template.interface';
+import { formatResumeDate, formatResumeDateRange, formatEducationScore } from './template.interface';
 import { BasicResumeTemplate } from './basic-resume.template';
 import { ModernCvTemplate } from './modern-cv.template';
 import { ModernResumeTemplate } from './modern-resume.template';
@@ -150,6 +150,36 @@ describe('Nav Links and Stripper in Templates', () => {
           expect(stripped).toContain('#link("mailto:');
         }
       });
+    });
+  });
+
+  describe('formatEducationScore', () => {
+    it('should return empty string for undefined or empty input', () => {
+      expect(formatEducationScore(undefined)).toBe('');
+      expect(formatEducationScore('')).toBe('');
+      expect(formatEducationScore('   ')).toBe('');
+    });
+
+    it('should default to (GPA: ...) for raw numeric scores', () => {
+      expect(formatEducationScore('3.9 / 4.0')).toBe(' (GPA: 3.9 / 4.0)');
+      expect(formatEducationScore('3.85')).toBe(' (GPA: 3.85)');
+    });
+
+    it('should preserve custom user-entered labels without repeating GPA', () => {
+      expect(formatEducationScore('88%')).toBe(' (88%)');
+      expect(formatEducationScore('9.2 CGPA')).toBe(' (9.2 CGPA)');
+      expect(formatEducationScore('9.4 SGPA')).toBe(' (9.4 SGPA)');
+      expect(formatEducationScore('First Class Honours')).toBe(' (First Class Honours)');
+      expect(formatEducationScore('Upper Second Class (2:1)')).toBe(' (Upper Second Class (2:1))');
+      expect(formatEducationScore('Summa Cum Laude')).toBe(' (Summa Cum Laude)');
+      expect(formatEducationScore('Distinction')).toBe(' (Distinction)');
+      expect(formatEducationScore('Merit')).toBe(' (Merit)');
+      expect(formatEducationScore('1.2 (Sehr Gut)')).toBe(' (1.2 (Sehr Gut))');
+      expect(formatEducationScore('Rank 1 / 120')).toBe(' (Rank 1 / 120)');
+      expect(formatEducationScore('Top 5%')).toBe(' (Top 5%)');
+      expect(formatEducationScore("Dean's List")).toBe(" (Dean's List)");
+      expect(formatEducationScore('Grade: A+')).toBe(' (Grade: A+)');
+      expect(formatEducationScore('GPA: 3.9')).toBe(' (GPA: 3.9)');
     });
   });
 });

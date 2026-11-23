@@ -207,6 +207,32 @@ export function formatBullets(bullets: string[] | undefined): string {
     .join('\n');
 }
 
+/**
+ * Intelligently formats education scores/grades/GPAs across international grading standards:
+ * - If user types raw numbers or scales (e.g. "3.9 / 4.0", "3.85", "4.0/4.0"), defaults to "(GPA: ...)"
+ * - If user provides their own label, classification, honours, ranking, or scale
+ *   (e.g. "88%", "9.2 CGPA", "First Class", "Summa Cum Laude", "Rank 1", "Distinction", "1.3 (Sehr Gut)", "110/110 cum laude"),
+ *   preserves their exact text cleanly without forcing or duplicating "GPA".
+ */
+export function formatEducationScore(score: string | undefined): string {
+  if (!score || !score.trim()) return '';
+  const trimmed = score.trim();
+
+  // If the string starts with, ends with, or contains non-GPA grading designations or any alphabetic text other than just raw numbers/slashes
+  const isSelfDescribing = 
+    /(gpa|cgpa|sgpa|grade|score|marks?|rank|class|division|laude|honou?rs|distinction|merit|gut|bien|sobresaliente|pass)/i.test(trimmed) ||
+    /%/.test(trimmed) ||
+    // If it contains alphabetic text or words (e.g. "A+", "Top 5%", "Dean's List", "First") and is not just numeric fractions like "3.9 / 4.0"
+    (/[a-zA-Z]/.test(trimmed) && !/^\s*\d+(\.\d+)?\s*\/\s*\d+(\.\d+)?\s*$/.test(trimmed));
+
+  if (isSelfDescribing) {
+    return ` (${escapeTypst(trimmed)})`;
+  }
+
+  // Bare numeric score/scale (e.g. "3.9", "3.8 / 4.0", "4.0") -> default prefix GPA:
+  return ` (GPA: ${escapeTypst(trimmed)})`;
+}
+
 export function wrapSectionHeading(sectionId: string, headingMarkup: string): string {
   return `#link("nav:section:${sectionId}")[${headingMarkup}]`;
 }

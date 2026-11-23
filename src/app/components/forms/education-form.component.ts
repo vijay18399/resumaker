@@ -40,8 +40,7 @@ import { SectionVisibilityToggleComponent } from '../ui/section-visibility-toggl
             <div class="card-top-bar">
               <div class="card-item-title-group">
                 <span class="index-pill">{{ idx + 1 }}</span>
-                <span class="card-item-title">{{ edu.studyType || 'Degree' }}</span>
-                <span class="card-item-subtitle" *ngIf="edu.institution">{{ edu.institution }}</span>
+                <span class="card-item-title">{{ edu.studyType || edu.institution || 'Degree' }}</span>
               </div>
               <div class="card-actions flex items-center gap-1">
                 <button type="button" class="btn-icon-subtle" (click)="store.moveEducation(idx, 'up')" [disabled]="idx === 0" title="Move Up">↑</button>
@@ -87,8 +86,8 @@ import { SectionVisibilityToggleComponent } from '../ui/section-visibility-toggl
               />
 
               <app-form-input
-                label="GPA / Grade"
-                placeholder="e.g. 3.9 / 4.0"
+                label="GPA / Grade / Score"
+                placeholder="e.g. 3.9 / 4.0, 88%, or First Class Honours"
                 [value]="edu.score || ''"
                 (valueChange)="store.updateEducation(edu.id!, { score: $event })"
               />

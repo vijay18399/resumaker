@@ -1,5 +1,5 @@
 import { ResumeData, TemplateConfig } from '../models/resume.model';
-import { renderExtraSections, ResumeTemplate, escapeTypst, formatEmail, formatUrl, formatBullets, formatResumeDate, formatResumeDateRange, formatProfileLinks, getSectionHeading, getTypstMargin, getTypstFontSize } from './template.interface';
+import { renderExtraSections, ResumeTemplate, escapeTypst, formatEmail, formatUrl, formatBullets, formatResumeDate, formatResumeDateRange, formatProfileLinks, formatEducationScore, getSectionHeading, getTypstMargin, getTypstFontSize } from './template.interface';
 
 /**
  * Grid CV Template
@@ -47,7 +47,7 @@ export class GridCvTemplate implements ResumeTemplate {
     const eduItems = (d.education || []).map(edu => {
       const dateStr = formatResumeDateRange(edu.startDate, edu.endDate, '–');
       const degreeStr = [edu.studyType, edu.area].filter(Boolean).join(' in ');
-      const gpaStr = edu.score ? ` (GPA: ${escapeTypst(edu.score)})` : '';
+      const gpaStr = formatEducationScore(edu.score);
       const block = `#block(breakable: false)[*${escapeTypst(edu.institution)}* \n#text(size: 9.5pt, fill: rgb("475569"))[${escapeTypst(degreeStr)}${gpaStr} | ${escapeTypst(dateStr)}]]`;
       return edu.id ? `#link("nav:entry:education:${edu.id}")[${block}]` : block;
     }).join('\n\n');

@@ -41,7 +41,6 @@ import { SectionVisibilityToggleComponent } from '../ui/section-visibility-toggl
               <div class="card-item-title-group">
                 <span class="index-pill">{{ idx + 1 }}</span>
                 <span class="card-item-title">{{ lang.language || 'Language' }}</span>
-                <span class="card-item-subtitle" *ngIf="lang.fluency">{{ lang.fluency }}</span>
               </div>
               <div class="card-actions">
                 <button type="button" class="btn-icon-subtle delete" (click)="store.removeLanguage(lang.id!)" title="Remove">✕</button>

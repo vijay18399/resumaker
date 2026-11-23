@@ -1,5 +1,5 @@
 import { ResumeData, TemplateConfig } from '../models/resume.model';
-import { renderExtraSections, ResumeTemplate, escapeTypst, formatEmail, formatUrl, formatBullets, formatResumeDate, formatResumeDateRange, formatProfileLinks, getSectionHeading, getTypstMargin, getTypstFontSize } from './template.interface';
+import { renderExtraSections, ResumeTemplate, escapeTypst, formatEmail, formatUrl, formatBullets, formatResumeDate, formatResumeDateRange, formatProfileLinks, formatEducationScore, getSectionHeading, getTypstMargin, getTypstFontSize } from './template.interface';
 
 /**
  * Modern CV Template
@@ -51,7 +51,7 @@ export class ModernCvTemplate implements ResumeTemplate {
     const eduItems = (d.education || []).map(edu => {
       const dateStr = formatResumeDateRange(edu.startDate, edu.endDate, '–');
       const degreeStr = [edu.studyType, edu.area].filter(Boolean).join(' in ');
-      const gpaStr = edu.score ? ` (${escapeTypst(edu.score)})` : '';
+      const gpaStr = formatEducationScore(edu.score);
       const block = `#block(breakable: false)[#resume-entry(
   title: "${escapeTypst(edu.institution)}",
   location: "",

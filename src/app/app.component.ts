@@ -5,6 +5,8 @@ import {
   computed,
   signal,
   effect,
+  viewChild,
+  ElementRef,
   ChangeDetectionStrategy
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -76,6 +78,9 @@ export class AppComponent implements OnInit {
   // Mobile viewport tab toggle ('editor' | 'preview')
   readonly mobileTab = signal<'editor' | 'preview'>('editor');
 
+  // Scrollable container for forms
+  readonly formScrollable = viewChild<ElementRef<HTMLElement>>('formScrollable');
+
   // Active Typst code string
   readonly generatedCode = computed(() => {
     const activeTemplate = this.store.selectedTemplateId();
@@ -88,6 +93,15 @@ export class AppComponent implements OnInit {
   private debounceTimer: any = null;
 
   constructor() {
+    // Reset scroll position when switching active form section
+    effect(() => {
+      this.store.activeSection();
+      const scrollEl = this.formScrollable()?.nativeElement;
+      if (scrollEl) {
+        scrollEl.scrollTo({ top: 0, behavior: 'instant' });
+      }
+    });
+
     // Reactive compile trigger whenever resume data, template or WASM readiness changes
     effect(() => {
       const isReady = this.compiler.isReady();
@@ -239,11 +253,15 @@ export class AppComponent implements OnInit {
     this.store.setActiveSection(sectionId, itemId);
     setTimeout(() => {
       const el = document.getElementById(itemId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        el.classList.add('flash-highlight');
-        setTimeout(() => el.classList.remove('flash-highlight'), 1200);
+      const container = this.formScrollable()?.nativeElement;
+      if (el && container) {
+        const containerRect = container.getBoundingClientRect();
+        const elRect = el.getBoundingClientRect();
+        const relativeTop = elRect.top - containerRect.top + container.scrollTop;
+        // Position the card with comfortable 12px breathing room from the top of the container
+        const targetScrollTop = Math.max(0, relativeTop - 12);
+        container.scrollTo({ top: targetScrollTop, behavior: 'smooth' });
       }
-    }, 50);
+    }, 60);
   }
 }
